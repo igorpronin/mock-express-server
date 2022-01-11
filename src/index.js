@@ -1,12 +1,14 @@
 const express = require('express')
 const app = express()
 const port = 3010
+const fs = require('fs');
+
+const indexHtml = fs.readFileSync('./public/index.html').toString();
 
 app.use(express.static('public'))
 
-app.get('/text', (req, res) => {
-  console.log('/')
-  res.send('Hello World!')
+app.get('/s', (req, res) => {
+  res.send(indexHtml)
 })
 
 app.listen(port, () => {
